@@ -19,7 +19,7 @@ const store = createStore(
     )
 )
 
-export default class App extends Component {
+class ConnectedApp extends Component {
   render() {
     return (
       <Provider store={store}>
@@ -29,4 +29,4 @@ export default class App extends Component {
   }
 }
 
-export default App
+export default ConnectedApp
