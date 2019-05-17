@@ -1,7 +1,7 @@
-import { find, prop } from 'ramda'
+import { findIndex, prop } from 'ramda'
 import { isAfter } from 'date-fns'
 
-const findNextDate = (date, dates) => find(
+const findNextDateByIndex = (date, dates) => findIndex(
     testDateObject => isAfter(
         prop('date', testDateObject),
         date,
@@ -9,4 +9,4 @@ const findNextDate = (date, dates) => find(
     dates
 )
 
-export default findNextDate
+export default findNextDateByIndex
