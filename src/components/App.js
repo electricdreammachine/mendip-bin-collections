@@ -1,6 +1,6 @@
 import React from 'react'
-// import { format } from 'date-fns'
 import { StyleSheet, Text, View } from 'react-native'
+import DateView from './date-view/date-view'
 
 export default class App extends React.Component {
   componentDidMount() {
@@ -11,8 +11,8 @@ export default class App extends React.Component {
     const { loading, twoNextDates } = this.props
     return loading ? <Text>loading</Text> :
       (<View style={styles.container}>
-        {console.log(this.props)}
-        <Text>Next collection is</Text>
+        <DateView dateProperties={twoNextDates[0]} dateName="Next" />
+        <DateView dateProperties={twoNextDates[1]} dateName="Then" />
       </View>)
   }
 }
