@@ -4,6 +4,8 @@ import { Provider } from 'react-redux'
 import { reducer } from './src/store'
 import axios from 'axios'
 import axiosMiddleware from 'redux-axios-middleware'
+import * as Font from 'expo-font'
+import { fonts } from './src/styles'
 
 import App from './src/views/App'
 
@@ -20,10 +22,27 @@ const store = createStore(
 )
 
 class ConnectedApp extends Component {
+  constructor() {
+    super()
+
+    this.state = {
+      fontLoaded: false,
+    }
+  }
+
+  async componentDidMount() {
+    await Font.loadAsync({
+      [fonts.BALOO_DA]: require('./assets/fonts/BalooDa-Regular.ttf'),
+      [fonts.RED_HAT_DISPLAY]: require('./assets/fonts/RedHatDisplay-Medium.ttf'),
+    })
+
+    this.setState({ fontLoaded: true })
+  }
+
   render() {
     return (
       <Provider store={store}>
-          <App />
+          {this.state.fontLoaded ? <App /> : null}
       </Provider>
     );
   }
