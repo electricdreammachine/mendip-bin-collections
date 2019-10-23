@@ -26,8 +26,8 @@ const DateView = ({
                             y="0"
                             width="100%"
                             height="100%"
-                            stroke="lightblue"
-                            strokeWidth="8"
+                            stroke="red"
+                            strokeWidth="5"
                             fill="lightyellow"
                             rx="5"
                             ry="5"
@@ -43,7 +43,7 @@ const DateView = ({
                 </Svg>
                 <Svg style={dateStyles.binGraphic}>
                     <G x="200" y="0">
-                        <Logo width={120} height={200} />
+                        <Logo width={120} height={200} strokeWidth="0.5" stroke="red" vectorEffect="non-scaling-stroke" />
                     </G>
                 </Svg>
                 <Text style={dateStyles.date}>
@@ -61,8 +61,8 @@ const dateStyles = StyleSheet.create({
     dateHeader: {
         ...typographyVariants.headerTypography,
         fontSize: 40,
-        marginLeft: 18,
-        marginBottom: -7,
+        marginLeft: 14,
+        marginBottom: -10,
         paddingBottom: 0,
     },
     date: {
