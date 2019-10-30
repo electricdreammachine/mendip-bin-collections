@@ -1,6 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, Button } from 'react-native'
-import { colours } from '../styles'
+import { Text, View } from 'react-native'
 import DateView from './date-view/date-view'
 
 export default class App extends React.Component {
@@ -11,27 +10,9 @@ export default class App extends React.Component {
   render() {
     const { loading, twoNextDates } = this.props
     return loading ? <Text>loading</Text> :
-      (<View style={styles.container}>
+      (<View style={{ flex: 1 }} >
         <DateView dateProperties={twoNextDates[0]} dateName="Next" />
         <DateView dateProperties={twoNextDates[1]} dateName="Then" />
-        <Button
-          title="View all upcoming collections"
-          onPress={() => {}}
-          color={colours.green}
-        />
       </View>)
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: "5%",
-    backgroundColor: colours.offwhite,
-    alignItems: 'stretch',
-    justifyContent: 'center',
-  },
-  button: {
-    backgroundColor: colours.green,
-  },
-});
