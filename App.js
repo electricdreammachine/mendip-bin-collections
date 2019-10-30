@@ -8,6 +8,13 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import App from './src/views/App'
 
+if (Platform.OS === 'android') {
+  SafeAreaView
+    .setStatusBarHeight
+    /* Some value for status bar height + notch height */
+    (70)
+}
+
 const client = axios.create({
   responseType: 'json',
   baseURL: 'https://raw.githubusercontent.com/electricdreammachine/mendip-bin-collections-schedule/master',
@@ -32,4 +39,11 @@ class ConnectedApp extends Component {
   }
 }
 
-export default ConnectedApp
+const AppNavigator = createMaterialTopTabNavigator({
+  Home: ConnectedApp,
+  CalendarOverview,
+}, {
+  initialRouteName: 'Home',
+})
+
+export default createAppContainer(AppNavigator)
