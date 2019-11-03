@@ -1,11 +1,12 @@
 import { createSelector } from 'reselect'
 import { slice } from 'ramda'
+import { DatesState } from './reducer'
 import findNextDateByIndex from '../utils/find-next-date-by-index/find-next-date-by-index'
 
-const dates = state => state.dates
-const types = state => state.types
-const today = state => state.today
-const loading = state => state.loading
+const dates = (state: DatesState) => state.dates
+const types = (state: DatesState) => state.types
+const today = (state: DatesState) => state.today
+const loading = (state: DatesState) => state.loading
 
 const twoNextDates = createSelector(
     [dates, today],

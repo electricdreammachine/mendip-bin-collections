@@ -1,15 +1,23 @@
-import { GET_DATES } from './action-types'
+import { GET_DATES, CollectionDate, CollectionType } from './action-types'
+import { getDatesActions } from './actions'
 import { merge } from 'ramda'
 import { startOfToday } from 'date-fns'
 
-const intialState = {
+export interface DatesState {
+    dates: CollectionDate[],
+    types: { [key: string]: CollectionType },
+    loading: boolean,
+    today: Date,
+}
+
+const intialState: DatesState = {
     dates: [],
-    types: [],
+    types: {},
     loading: false,
     today: startOfToday(),
 }
 
-export const reducer = (state = intialState, action) => {
+export const reducer = (state: DatesState = intialState, action: getDatesActions) => {
     switch (action.type) {
         case GET_DATES:
             return merge(state, { loading: true })

@@ -1,19 +1,14 @@
-import React, { Component } from 'react'
+import * as React from 'react'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import { reducer } from './src/store'
 import axios from 'axios'
 import axiosMiddleware from 'redux-axios-middleware'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
+import * as Font from 'expo-font'
+import { fonts } from './src/styles/typography'
 
 import App from './src/views/App'
-
-if (Platform.OS === 'android') {
-  SafeAreaView
-    .setStatusBarHeight
-    /* Some value for status bar height + notch height */
-    (70)
-}
 
 const client = axios.create({
   responseType: 'json',
@@ -27,23 +22,29 @@ const store = createStore(
     )
 )
 
-class ConnectedApp extends Component {
+class ConnectedApp extends React.Component {
+  state = {
+    fontLoaded: false,
+  }
+
+  async componentDidMount() {
+    await Font.loadAsync({
+      [fonts.BALOO_DA]: require('assets/fonts/BalooDa-Regular.ttf'),
+      [fonts.RED_HAT_DISPLAY]: require('assets/fonts/RedHatDisplay-Medium.ttf'),
+    })
+
+    this.setState({ fontLoaded: true })
+  }
+
   render() {
     return (
       <SafeAreaProvider>
         <Provider store={store}>
-            <App />
+            {this.state.fontLoaded ? <App /> : null}
         </Provider>
       </SafeAreaProvider>
     )
   }
 }
 
-const AppNavigator = createMaterialTopTabNavigator({
-  Home: ConnectedApp,
-  CalendarOverview,
-}, {
-  initialRouteName: 'Home',
-})
-
-export default createAppContainer(AppNavigator)
+export default ConnectedApp

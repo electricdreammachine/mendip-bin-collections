@@ -1,6 +1,6 @@
-export const fonts = {
-    RED_HAT_DISPLAY: 'Red Hat Display',
-    BALOO_DA: 'Baloo Da',
+export enum fonts {
+    RED_HAT_DISPLAY = 'Red Hat Display',
+    BALOO_DA = 'Baloo Da'
 }
 
 const baseTypography = {

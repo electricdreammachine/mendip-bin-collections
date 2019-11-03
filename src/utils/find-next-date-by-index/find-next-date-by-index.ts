@@ -1,7 +1,8 @@
 import { findIndex, prop } from 'ramda'
 import { isAfter } from 'date-fns'
+import { CollectionDate } from '../../store/action-types'
 
-const findNextDateByIndex = (date, dates) => findIndex(
+const findNextDateByIndex = (date: Date, dates: CollectionDate[]) => findIndex(
     testDateObject => isAfter(
         prop('date', testDateObject),
         date,
