@@ -1,10 +1,10 @@
 import { connect } from 'react-redux'
 import { map, assoc, prop } from 'ramda'
-import { actions, selectors } from '../store'
+import { actions, selectors, DatesState } from '../store'
 import App from '../components/App'
 import findDateType from '../utils/find-date-type/find-date-type'
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: DatesState) => ({
     twoNextDates: map(
         (date) => assoc(
             'type',

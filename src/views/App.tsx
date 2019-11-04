@@ -46,7 +46,7 @@ const AppNavigator = createMaterialTopTabNavigator({
         <View style={{ backgroundColor: `rgba(${dropLast(1, hexRgb(colours.darkgrey, {format: 'array' })).join(', ')}, 0.7)` }}>
           <MaterialTopTabBar
             {...props}
-            style={{ paddingTop: insets.top, ...props.style }}
+            style={{ paddingTop: insets ? insets.top: 0, ...props.style }}
           />
         </View>
       }

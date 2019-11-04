@@ -1,16 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Text, StyleSheet, View } from 'react-native'
-import Svg, { Rect, Defs, Use, G, ClipPath } from 'react-native-svg'
+import { Text, StyleSheet, View, StyleProp, TextStyle } from 'react-native'
+import Svg, { G } from 'react-native-svg'
 import { isNil } from 'ramda'
 import { format } from 'date-fns'
+// @ts-ignore
 import Logo from '../../../assets/icons/bin2.svg'
 import { typographyVariants, collectionThemes } from '../../styles'
+import { CollectionDate, CollectionType } from '../../store/action-types'
 
-const DateView = ({
-    dateProperties,
-    dateName,
-}) => {
+interface DateViewProps {
+    dateProperties: CollectionDate,
+    dateName: CollectionType,
+}
+
+const DateView = (
+    {
+        dateProperties,
+        dateName,
+    }: DateViewProps
+): React.FunctionComponentElement<DateViewProps> | null => {
     if (isNil(dateProperties)) return null
     
     return (
@@ -35,7 +44,11 @@ const DateView = ({
     )
 }
 
-const dateStyles = StyleSheet.create({
+interface DateStyles {
+    [key: string]: StyleProp<TextStyle>,
+}
+
+const dateStyles: DateStyles = StyleSheet.create({
     dateHeader: {
         ...typographyVariants.headerTypography,
         fontSize: 40,

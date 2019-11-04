@@ -1,8 +1,15 @@
 import React from 'react'
 import { Text, View, StyleSheet } from 'react-native'
 import DateView from './date-view/date-view'
+import { CollectionDate } from '../store/action-types'
 
-export default class App extends React.Component {
+interface ScreenProps {
+  getDates: Function,
+  loading: boolean,
+  twoNextDates: CollectionDate[]
+}
+
+export default class App extends React.Component<ScreenProps> {
   componentDidMount() {
     this.props.getDates()
   }
