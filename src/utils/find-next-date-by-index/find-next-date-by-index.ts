@@ -6,7 +6,7 @@ const findNextDateByIndex = (date: Date, dates: CollectionDate[]) => findIndex(
     testDateObject => isAfter(
         prop('date', testDateObject),
         date,
-    )  , 
+    ), 
     dates
 )
 
