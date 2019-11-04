@@ -1,6 +1,6 @@
 import React from 'react'
-import { createAppContainer } from 'react-navigation'
-import { StyleSheet, View } from 'react-native'
+import { createAppContainer, NavigationNavigator } from 'react-navigation'
+import { StyleSheet, View, StyleProp, TextStyle } from 'react-native'
 import { createMaterialTopTabNavigator, MaterialTopTabBar } from 'react-navigation-tabs'
 import { dropLast } from 'ramda'
 import hexRgb from 'hex-rgb'
@@ -15,7 +15,7 @@ class App extends React.Component {
   }
 }
 
-const appStyles = StyleSheet.create({
+const appStyles: { [key: string]: StyleProp<TextStyle> } = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: "5%",
@@ -25,7 +25,7 @@ const appStyles = StyleSheet.create({
   },
 })
 
-const AppNavigator = createMaterialTopTabNavigator({
+const AppNavigator: NavigationNavigator<any, any> = createMaterialTopTabNavigator({
   Home: {
     screen: App,
     navigationOptions: {

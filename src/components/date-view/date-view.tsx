@@ -44,11 +44,7 @@ const DateView = (
     )
 }
 
-interface DateStyles {
-    [key: string]: StyleProp<TextStyle>,
-}
-
-const dateStyles: DateStyles = StyleSheet.create({
+const dateStyles: { [key: string]: StyleProp<TextStyle> } = StyleSheet.create({
     dateHeader: {
         ...typographyVariants.headerTypography,
         fontSize: 40,

@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, Store } from 'redux'
 import { Provider } from 'react-redux'
-import { reducer } from './src/store'
-import axios from 'axios'
+import { reducer, DatesState } from './src/store'
+import axios, { AxiosInstance } from 'axios'
 import axiosMiddleware from 'redux-axios-middleware'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import * as Font from 'expo-font'
@@ -10,12 +10,12 @@ import { fonts } from './src/styles/typography'
 
 import App from './src/views/App'
 
-const client = axios.create({
+const client: AxiosInstance = axios.create({
   responseType: 'json',
   baseURL: 'https://raw.githubusercontent.com/electricdreammachine/mendip-bin-collections-schedule/master',
 })
 
-const store = createStore(
+const store: Store<DatesState> = createStore(
     reducer,
     applyMiddleware(
         axiosMiddleware(client)
